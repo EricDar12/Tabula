@@ -1,0 +1,22 @@
+﻿@model Tabula.Models.Account.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+<form asp-controller="Account" asp-action="LogIn">
+    @Html.AntiForgeryToken()
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" placeholder="Email Address" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" placeholder="Password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+</form>
+<a asp-controller="Account" asp-action="RegistrationPage">Need an account?</a>
+

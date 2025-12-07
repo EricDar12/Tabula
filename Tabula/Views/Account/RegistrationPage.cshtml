@@ -1,0 +1,31 @@
+﻿@model Tabula.Models.Account.RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>Register</h1>
+<form asp-controller="Account" asp-action="Register" method="post">
+    @Html.AntiForgeryToken()
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" placeholder="Email Address" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" placeholder="Password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="ConfirmPassword"></label>
+        <input asp-for="ConfirmPassword" type="password" placeholder="Confirm Password" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+
+    <button type="submit">Register</button>
+</form>
+<a asp-controller="Account" asp-action="Index">Already have an account?</a>
+
+

@@ -1,0 +1,92 @@
+# ------------------------------
+# Visual Studio / VS 2026
+# ------------------------------
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vsstmp/
+
+# Mono auto-generated files
+mono_crash.*
+
+# ------------------------------
+# Build results
+# ------------------------------
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+bld/
+
+# ------------------------------
+# IDEs
+# ------------------------------
+.vscode/
+.idea/
+*.sln.iml
+
+# ------------------------------
+# ASP.NET Core / Web
+# ------------------------------
+wwwroot/lib/
+wwwroot/bundle/
+wwwroot/dist/
+
+# ------------------------------
+# Local databases
+# ------------------------------
+*.mdf
+*.ldf
+*.ndf
+*.db
+
+# ------------------------------
+# Entity Framework Core Migrations
+# (usually keep in repo)
+# ------------------------------
+# Migrations/
+
+# ------------------------------
+# User secrets
+# ------------------------------
+appsettings.Development.json
+secrets.json
+secrets.*
+
+# ------------------------------
+# Logs
+# ------------------------------
+*.log
+logs/
+TestResults/
+
+# ------------------------------
+# Package managers
+# ------------------------------
+node_modules/
+packages/
+
+# ------------------------------
+# NuGet
+# ------------------------------
+*.nupkg
+*.snupkg
+.nuget/
+
+# ------------------------------
+# OS generated files
+# ------------------------------
+.DS_Store
+Thumbs.db
+
+# ------------------------------
+# Backup files
+# ------------------------------
+*.bak
+*.backup
+*~
