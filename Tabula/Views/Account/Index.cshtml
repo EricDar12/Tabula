@@ -4,11 +4,11 @@
 }
 
 <h1>Login</h1>
-<form asp-controller="Account" asp-action="LogIn">
+<form asp-controller="Account" asp-action="LogIn" method="post">
     @Html.AntiForgeryToken()
     <div>
         <label asp-for="Email"></label>
-        <input asp-for="Email" placeholder="Email Address" />
+        <input asp-for="Email" type="email" placeholder="Email Address" />
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
 
@@ -17,6 +17,11 @@
         <input asp-for="Password" type="password" placeholder="Password" />
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
+    <div>
+        <label asp-for="RememberMe"></label>
+        <input asp-for="RememberMe" type="checkbox"/>
+    </div>
+    <button type="submit">Log in</button>
 </form>
 <a asp-controller="Account" asp-action="RegistrationPage">Need an account?</a>
 

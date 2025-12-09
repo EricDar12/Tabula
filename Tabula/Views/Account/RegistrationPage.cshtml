@@ -4,17 +4,25 @@
 }
 
 <h1>Register</h1>
+
 <form asp-controller="Account" asp-action="Register" method="post">
     @Html.AntiForgeryToken()
+
     <div>
         <label asp-for="Email"></label>
-        <input asp-for="Email" placeholder="Email Address" />
+        <input asp-for="Email" type="email" placeholder="Email Address" />
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
 
     <div>
+        <label asp-for="Username"></label>
+        <input asp-for="Username" placeholder="Username" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+
+    <div>
         <label asp-for="Password"></label>
-        <input asp-for="Password" type="password" placeholder="Password" />
+        <input asp-for="Password" type="password" placeholder="Password" id="Password" />
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
 
@@ -27,5 +35,3 @@
     <button type="submit">Register</button>
 </form>
 <a asp-controller="Account" asp-action="Index">Already have an account?</a>
-
-
