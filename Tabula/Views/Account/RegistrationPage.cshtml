@@ -2,36 +2,96 @@
 @{
     ViewData["Title"] = "Register";
 }
-
 <h1>Register</h1>
-
 <form asp-controller="Account" asp-action="Register" method="post">
     @Html.AntiForgeryToken()
+
+    <!-- Add this validation summary for general errors -->
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
     <div>
         <label asp-for="Email"></label>
         <input asp-for="Email" type="email" placeholder="Email Address" />
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
-
     <div>
         <label asp-for="Username"></label>
         <input asp-for="Username" placeholder="Username" />
         <span asp-validation-for="Username" class="text-danger"></span>
     </div>
-
     <div>
         <label asp-for="Password"></label>
         <input asp-for="Password" type="password" placeholder="Password" id="Password" />
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
-
     <div>
         <label asp-for="ConfirmPassword"></label>
         <input asp-for="ConfirmPassword" type="password" placeholder="Confirm Password" />
         <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
     </div>
-
     <button type="submit">Register</button>
+    <div id="emailValidation" class="text-danger">
+        <p id="length">Password must be at least 8 characters</p>
+        <p id="upper">Password must contain at least one upper case character</p>
+        <p id="special">Password must contain at least one special character</p>
+        <p id="digit">Password must contain at least one digit</p>
+    </div>
 </form>
 <a asp-controller="Account" asp-action="Index">Already have an account?</a>
+
+<script>
+
+    var input = document.getElementById("Password");
+    var valid = document.getElementById("emailValidation");
+
+    var lengthMsg = document.getElementById("length");
+    var upperMsg = document.getElementById("upper");
+    var specialMsg = document.getElementById("special");
+    var digitMsg = document.getElementById("digit");
+
+    valid.style.display = "none";
+
+    input.onfocus = function() {
+        valid.style.display = "block";
+    };
+    input.onblur = function() {
+        valid.style.display = "none";
+    };
+
+    input.oninput = function() {
+
+        var password = input.value;
+
+        if (password.length >= 8) {
+            lengthMsg.style.color = "green";
+            lengthMsg.style.textDecoration = "line-through";
+        } else {
+            lengthMsg.style.color = "red";
+            lengthMsg.style.textDecoration = "none";
+        }
+
+        if (/[A-Z]/.test(password)) {
+            upperMsg.style.color = "green";
+            upperMsg.style.textDecoration = "line-through";
+        } else {
+            upperMsg.style.color = "red";
+            upperMsg.style.textDecoration = "none";
+        }
+
+        if (/\W/.test(password)) {
+            specialMsg.style.color = "green";
+            specialMsg.style.textDecoration = "line-through";
+        } else {
+            specialMsg.style.color = "red";
+            specialMsg.style.textDecoration = "none";
+        }
+
+        if (/\d/.test(password)) {
+            digitMsg.style.color = "green";
+            digitMsg.style.textDecoration = "line-through";
+        } else {
+            digitMsg.style.color = "red";
+            digitMsg.style.textDecoration = "none";
+        }
+    };
+</script>
