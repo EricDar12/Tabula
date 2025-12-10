@@ -4,25 +4,34 @@
     Layout = "_Account";
 }
 
-<h1>Login</h1>
-<form asp-controller="Account" asp-action="LogIn" method="post">
-    @Html.AntiForgeryToken()
-    <div>
-        <label asp-for="Email"></label>
-        <input asp-for="Email" type="email" placeholder="Email Address" />
-        <span asp-validation-for="Email" class="text-danger"></span>
+<div class="row justify-content-center h-auto mt-4">
+    <div class="col-md-5">
+        <div class="card shadow-lg border-secondary-subtle" style="border-radius:8px; min-height:65vh">
+            <div class="card-body">
+                <div class="border-bottom my-2">
+                    <h3 class="text-center text-primary pb-lg-3">Log in</h3>
+                </div>
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                <form asp-controller="Account" asp-action="LogIn" method="post">
+                    @Html.AntiForgeryToken()
+                    <div class="my-3">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control @(ViewData.ModelState["Email"]?.Errors.Any() == true ? "is-invalid" : "")" />
+                        <span asp-validation-for="Email" class="invalid-feedback"></span>
+                    </div>
+                    <div class="my-3">
+                        <label asp-for="Password" class="form-label"></label>
+                        <input asp-for="Password" type="password" class="form-control @(ViewData.ModelState["Password"]?.Errors.Any() == true ? "is-invalid" : "")" />
+                        <span asp-validation-for="Password" class="invalid-feedback"></span>
+                    </div>
+                    <div class="form-check mt-3">
+                        <input asp-for="RememberMe" class="form-check-input" type="checkbox"/>
+                        <label asp-for="RememberMe" class="form-check-label"></label>
+                    </div>  
+                    <button type="submit" class="btn btn-primary w-100 my-3">Log in</button>
+                    <a asp-action="Registrationpage" asp-controller="Account" class="text-center mt-3 d-block">Need an account?</a>
+                </form>
+            </div>
+        </div>
     </div>
-
-    <div>
-        <label asp-for="Password"></label>
-        <input asp-for="Password" type="password" placeholder="Password" />
-        <span asp-validation-for="Password" class="text-danger"></span>
-    </div>
-    <div>
-        <label asp-for="RememberMe"></label>
-        <input asp-for="RememberMe" type="checkbox"/>
-    </div>
-    <button type="submit">Log in</button>
-</form>
-<a asp-controller="Account" asp-action="RegistrationPage">Need an account?</a>
-
+</div>

@@ -7,16 +7,16 @@
     <link rel="stylesheet" href="~/lib/bootswatch/lux/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body class="d-flex flex-column min-vh-100 overflow-y-hidden">
+<body class="d-flex flex-column min-vh-100 overflow-auto">
     <header class="d-flex justify-content-md-center mt-4">
-        <h1 class="display-4 text-primary">Tabula</h1>
+        <h1 class="display-3 text-primary fw-bold">Tabula</h1>
     </header>
     <main class="flex-fill">
         <div class="container">
             @RenderBody()
         </div>
     </main>
-    <footer class="mt-4 py-3 border-top">
+    <footer class="mt-4 py-3">
         <div class="container d-flex justify-content-center">
             <small class="text-muted">
                 © @DateTime.Now.Year Tabula

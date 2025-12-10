@@ -4,15 +4,14 @@
     Layout = "_Account";
 }
 
-<div class="row justify-content-center mt-4">
+<div class="row justify-content-center h-auto mt-4">
     <div class="col-md-5">
-        <div class="card shadow-lg border-secondary-subtle" style="border-radius:8px;">
+        <div class="card shadow-lg border-secondary-subtle" style="border-radius:8px; min-height:65vh">
             <div class="card-body">
                 <div class="border-bottom my-2">
                     <h3 class="text-center text-primary pb-lg-3">Create a new account</h3>
                 </div>
                 <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
-
                 <form asp-controller="Account" asp-action="Register" method="post" novalidate>
                     @Html.AntiForgeryToken()
 
@@ -54,15 +53,8 @@
                         <input asp-for="ConfirmPassword" type="password" class="form-control @(ViewData.ModelState["ConfirmPassword"]?.Errors.Any() == true ? "is-invalid" : "")" />
                         <span asp-validation-for="ConfirmPassword" class="invalid-feedback"></span>
                     </div>
-
-                    <div class="mt-4">
-                        <p class="text-sm-center text-body-secondary">Your privacy is our concern, no user data will ever be sold or distributed.</p>
-                    </div>
-
                     <button type="submit" class="btn btn-primary w-100 my-3">Register</button>
-                    <a asp-action="Index" asp-controller="Account">
-                        <p class="text-center mt-3">Already have an account?</p>
-                    </a>
+                    <a asp-action="Index" asp-controller="Account" class="text-center mt-3 d-block">Already have an account?</a>
                 </form>
             </div>
         </div>
@@ -94,8 +86,8 @@
             rules.upper.className = /[A-Z]/.test(val) ? "list-group-item list-group-item-success small" : "list-group-item list-group-item-danger small";
             rules.upper.innerHTML = (/[A-Z]/.test(val) ? '<i class="bi bi-check-circle me-1"></i>' : '<i class="bi bi-x-circle me-1"></i>') + " At least one uppercase letter";
 
-            rules.special.className = /\W/.test(val) ? "list-group-item list-group-item-success small" : "list-group-item list-group-item-danger small";
-            rules.special.innerHTML = (/\W/.test(val) ? '<i class="bi bi-check-circle me-1"></i>' : '<i class="bi bi-x-circle me-1"></i>') + " At least one special character";
+            rules.special.className = /[^A-Za-z0-9\s]/.test(val) ? "list-group-item list-group-item-success small" : "list-group-item list-group-item-danger small";
+            rules.special.innerHTML = (/[^A-Za-z0-9\s]/.test(val) ? '<i class="bi bi-check-circle me-1"></i>' : '<i class="bi bi-x-circle me-1"></i>') + " At least one special character";
 
             rules.digit.className = /\d/.test(val) ? "list-group-item list-group-item-success small" : "list-group-item list-group-item-danger small";
             rules.digit.innerHTML = (/\d/.test(val) ? '<i class="bi bi-check-circle me-1"></i>' : '<i class="bi bi-x-circle me-1"></i>') + " At least one digit";
