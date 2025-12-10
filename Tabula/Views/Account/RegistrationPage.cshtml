@@ -4,18 +4,19 @@
     Layout = "_Account";
 }
 
-<div class="row justify-content-center mt-5">
+<div class="row justify-content-center mt-4">
     <div class="col-md-5">
-        <div class="card shadow-sm">
+        <div class="card shadow-lg border-secondary-subtle" style="border-radius:8px;">
             <div class="card-body">
-                <h3 class="text-center mb-4">Create Account</h3>
-
+                <div class="border-bottom my-2">
+                    <h3 class="text-center text-primary pb-lg-3">Create a new account</h3>
+                </div>
                 <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
 
                 <form asp-controller="Account" asp-action="Register" method="post" novalidate>
                     @Html.AntiForgeryToken()
 
-                    <div class="mb-3">
+                    <div class="my-3">
                         <label asp-for="Email" class="form-label"></label>
                         <input asp-for="Email" class="form-control @(ViewData.ModelState["Email"]?.Errors.Any() == true ? "is-invalid" : "")" />
                         <span asp-validation-for="Email" class="invalid-feedback"></span>
@@ -54,7 +55,11 @@
                         <span asp-validation-for="ConfirmPassword" class="invalid-feedback"></span>
                     </div>
 
-                    <button type="submit" class="btn btn-primary w-100">Register</button>
+                    <div class="mt-4">
+                        <p class="text-sm-center text-body-secondary">Your privacy is our concern, no user data will ever be sold or distributed.</p>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 my-3">Register</button>
                     <a asp-action="Index" asp-controller="Account">
                         <p class="text-center mt-3">Already have an account?</p>
                     </a>

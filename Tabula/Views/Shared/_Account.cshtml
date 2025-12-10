@@ -7,12 +7,22 @@
     <link rel="stylesheet" href="~/lib/bootswatch/lux/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100 overflow-y-hidden">
+    <header class="d-flex justify-content-md-center mt-4">
+        <h1 class="display-4 text-primary">Tabula</h1>
+    </header>
     <main class="flex-fill">
-        <div class="container my-5">
+        <div class="container">
             @RenderBody()
         </div>
     </main>
+    <footer class="mt-4 py-3 border-top">
+        <div class="container d-flex justify-content-center">
+            <small class="text-muted">
+                © @DateTime.Now.Year Tabula
+            </small>
+        </div>
+    </footer>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
