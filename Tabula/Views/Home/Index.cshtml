@@ -2,11 +2,42 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1>You have successfully signed in</h1>
+<div class="row g-3 mb-3">
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                Widget 1
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                Widget 2
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                Widget 3
+            </div>
+        </div>
+    </div>
 </div>
-
-<form asp-controller="Account" asp-action="Logout">
-    @Html.AntiForgeryToken()
-    <button type="submit">Log out</button>
-</form>
+<div class="row g-3">
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-body">
+                Widget 4
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-body">
+                Widget 5
+            </div>
+        </div>
+    </div>
+</div>

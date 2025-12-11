@@ -7,11 +7,31 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <header>Header Test</header>
-    <div class="container">
-        @RenderBody()
-    </div>
-    <footer>Footer Test</footer>
+    <header class="h-auto">
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid d-flex justify-content-between align-items-center">
+                <a class="navbar-brand text-light fw-bold mb-0 px-3">Tabula</a>
+                <form asp-controller="Account" asp-action="Logout" class="mb-0">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-outline-light btn-sm">
+                        Sign Out
+                    </button>
+                </form>
+            </div>
+        </nav>
+    </header>
+    <main class="container my-4">
+        <div class="container">
+            @RenderBody()
+        </div>
+    </main>
+    <footer class="mt-4 py-3">
+        <div class="container d-flex justify-content-center">
+            <small class="text-muted">
+                © @DateTime.Now.Year Tabula
+            </small>
+        </div>
+    </footer>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
